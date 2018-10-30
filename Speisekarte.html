@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Da Salvo - Speisekarte</title>
+</head>
+
+<body>
+  <!-- NAVIGATION -->
+  <nav>
+    <ul>
+      <li><a href="Startseite.html">Startseite</a></li>
+      <li>Speisekarte</li>
+      <li><a href="Kunde.html">Kunde</a></li>
+      <li><a href="Bäcker.html">Bäcker</a></li>
+      <li><a href="Fahrer.html">Fahrer</a></li>
+    </ul>
+  </nav>
+  <!-- Speisekarte -->
+  <section>
+    <h2>Speisekarte</h2>
+    <ol>
+      <li id="margherita" data-price="4.30" data-name="Pizza Margherita">Pizza Margherita - 4,30€</li>
+      <li id="salami" data-price="4.80" data-name="Pizza Salami">Pizza Salami - 4,80€</li>
+      <li id="peperoni" data-price="4.80" data-name="Pizza Peperoni">Pizza Peperoni - 4,80€</li>
+      <li id="speziale" data-price="5.80" data-name="Pizza Speziale">Pizza Speziale - 5,80€</li>
+      <li id="mix" data-price="5.80" data-name="Pizza Mix">Pizza Mix - 5,80 €</li>
+    </ol>
+  </section>
+  <!--Warenkorb -->
+  <section>
+    <h2>Warenkorb</h2>
+    <textarea name="warenkorb" rows="8" cols="80"></textarea> <br>
+    Preis: 13,40€ <br>
+    <button>Warenkorb leeren</button>
+  </section>
+  <!-- Formular -->
+  <section>
+    <h2>Ihre Daten</h2>
+    <form>
+      <fieldset>
+        <label>Vorname*:
+          <input type="text" id="vorname" name="Vorname" required />
+        </label><br>
+        <label>Nachname*:
+          <input type="text" id="nachname" name="Nachname" required />
+        </label><br>
+        <label>Adresse*:
+          <input type="text" id="adresse" name="Adresse" required />
+        </label><br>
+        <label>Hausnummer*:
+          <input type="text" id="hausnummer" name="Hausnummer" required />
+        </label><br>
+        <label>PLZ*:
+          <input type="text" id="plz" name="PLZ" required />
+        </label><br>
+        <label>Ort*:
+          <input type="text" id="ort" name="Ort" required />
+        </label><br>
+        <button>Senden</button>
+      </fieldset>
+    </form>
+  </section>
+</body>
+
+</html>
