@@ -1,0 +1,59 @@
+body {
+  font-size: 62.5%; <!-- weil 16 * 62.5% = 10 --> 1.6em = 16px -->
+  margin: 0;
+  padding: 0;
+  background-image: url("https://images6.alphacoders.com/412/412086.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+}
+
+main {
+  font-size: 1.6em;
+  font-family: 'Dancing Script', cursive;
+  padding: 2em;
+  margin: 0 auto;
+  width: 900px;
+  height: 2000px;
+  background-color: white;
+}
+
+
+nav {
+  background-color: #efca97;
+  font-family: serif;
+  font-size: 30px;
+  padding: 5px;
+
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+display: inline-block;
+
+margin: 0.5px;
+}
+
+nav a {
+  color: #444;
+  text-decoration: none;
+  text-transform: uppercase;
+
+}
+
+nav a:hover {
+  color: #000;
+}
+
+h1 {
+  text-align: center;
+}
+
+.kundenstatus input {
+  display: inline-block;
+}
