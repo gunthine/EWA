@@ -1,3 +1,4 @@
+
 body {
   font-size: 62.5%; <!-- weil 16 * 62.5% = 10 --> 1.6em = 16px -->
   margin: 0;
@@ -10,12 +11,13 @@ body {
 
 main {
   font-size: 1.6em;
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Lato', sans-serif;
   padding: 2em;
   margin: 0 auto;
   width: 900px;
-  height: 2000px;
+  height: 1200px;
   background-color: white;
+  opacity: 0.9;
 }
 
 
@@ -24,7 +26,7 @@ nav {
   font-family: serif;
   font-size: 30px;
   padding: 5px;
-
+  border: 5px solid #d19b30;
 }
 
 nav ul {
@@ -56,4 +58,39 @@ h1 {
 
 .kundenstatus input {
   display: inline-block;
+}
+
+.Speisekarte li{
+ margin: 0;
+ padding: 60px 120px 60px 120px;
+ margin-bottom: 10px;
+ list-style: none;
+ background-repeat: no-repeat;
+ background-position: left center;
+ background-size: 200px;
+}
+
+#margherita {
+  	background-image: url("http://www.eccopizzaepasta.com/images/pizza_new_ok.png?crc=4173385462");
+}
+
+#salami {
+  background-image: url("https://d1d8i24om29pt.cloudfront.net/static/desktop/products/pizza-salami.png");
+}
+
+#peperoni {
+  background-image: url("https://dlct0dt1hx57m.cloudfront.net/static/desktop/products/pizza-diabolo.png");
+}
+
+#speziale {
+  background-image: url("https://d1d8i24om29pt.cloudfront.net/static/desktop/products/pizza-spezial.png");
+}
+
+iframe {
+  margin-top: 10px;
+}
+
+.Speisekarte label {
+  font-size: 20px;
+  margin: 20px;
 }
