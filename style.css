@@ -12,11 +12,19 @@ main {
   font-size: 1.6em;
   font-family: 'Lato', sans-serif;
   padding: 2em;
-  margin: 0 auto;
-  width: 900px;
-  height: 1200px;
+  margin-left: 100px;
+  margin-right: 100px;
+  width: auto;
+  height: auto;
   background-color: white;
   opacity: 0.9;
+}
+
+@media screen and (max-width: 900px) {
+  main {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 h1 {
@@ -60,6 +68,10 @@ iframe {
 .Speisekarte label {
   font-size: 20px;
   margin: 20px;
+}
+
+.Speisekarte li:hover {
+  cursor: pointer;
 }
 
 nav ul {
