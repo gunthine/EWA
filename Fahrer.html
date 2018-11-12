@@ -28,8 +28,11 @@
   <section>
     <h2>Fahrer</h2>
     fertig / unterwegs / zugestellt <br>
-    Pizza Margherita <input type="radio" name="margherita" checked> <input type="radio" name="margherita"> <input type="radio" name="margherita"> <br>
-    Pizza Salami <input type="radio" name="salami" checked> <input type="radio" name="salami"> <input type="radio" name="salami"> <br>
+    <form id="kundenform" action="https://wwwold.fbi.h-da.de/cgi-bin/Echo.pl">
+      Pizza Margherita <input type="radio" name="margherita" value="fertig" checked> <input type="radio" name="margherita" value="unterwegs"> <input type="radio" name="margherita" value="zugestellt"> <br>
+      Pizza Salami <input type="radio" name="salami" value="fertig" checked> <input type="radio" name="salami" value="unterwegs"> <input type="radio" name="salami" value="zugestellt"> <br>
+      <input type="submit" value="Aktualisieren"></input>
+    </form>
   </section>
   </main>
 </body>

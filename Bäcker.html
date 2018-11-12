@@ -26,8 +26,11 @@
   <section>
     <h2>Bäcker</h2>
     bestellt / im Ofen / fertig <br>
-    Pizza Margherita <input type="radio" name="margherita" checked> <input type="radio" name="margherita"> <input type="radio" name="margherita"> <br>
-    Pizza Salami <input type="radio" name="salami" checked> <input type="radio" name="salami"> <input type="radio" name="salami"> <br>
+    <form id="kundenform" action="https://wwwold.fbi.h-da.de/cgi-bin/Echo.pl">
+      Pizza Margherita <input type="radio" name="margherita" checked value="bestellt"> <input type="radio" name="margherita" value="imOfen"> <input type="radio" name="margherita" value="fertig"><br>
+      Pizza Salami <input type="radio" name="salami" checked value="bestellt"> <input type="radio" name="salami" value="imOfen"> <input type="radio" name="salami" value="fertig"><br>
+      <input type="submit" value="Aktualisieren"></input>
+    </form>
   </section>
 </main>
 </body>
