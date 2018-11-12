@@ -37,21 +37,29 @@ h1 {
 
 .Speisekarte li{
  margin: 0;
- padding: 60px 120px 60px 120px;
+ padding: none;
  margin-bottom: 10px;
  list-style: none;
- background-repeat: no-repeat;
- background-position: left center;
- background-size: 200px;
 }
 
+.Speisekarte li img {
+  width: 20%;
+  height: auto;
+
+}
+
+
+/*
 #margherita {
   	background-image: url("http://www.eccopizzaepasta.com/images/pizza_new_ok.png?crc=4173385462");
 }
 
+
+
 #salami {
   background-image: url("https://d1d8i24om29pt.cloudfront.net/static/desktop/products/pizza-salami.png");
 }
+
 
 #peperoni {
   background-image: url("https://dlct0dt1hx57m.cloudfront.net/static/desktop/products/pizza-diabolo.png");
@@ -60,6 +68,10 @@ h1 {
 #speziale {
   background-image: url("https://d1d8i24om29pt.cloudfront.net/static/desktop/products/pizza-spezial.png");
 }
+*/
+
+
+
 
 iframe {
   margin-top: 10px;
@@ -70,7 +82,7 @@ iframe {
   margin: 20px;
 }
 
-.Speisekarte li:hover {
+.Speisekarte li img:hover {
   cursor: pointer;
 }
 
