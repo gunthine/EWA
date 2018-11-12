@@ -1,4 +1,3 @@
-
 body {
   font-size: 62.5%; <!-- weil 16 * 62.5% = 10 --> 1.6em = 16px -->
   margin: 0;
@@ -18,38 +17,6 @@ main {
   height: 1200px;
   background-color: white;
   opacity: 0.9;
-}
-
-
-nav {
-  background-color: #efca97;
-  font-family: serif;
-  font-size: 30px;
-  padding: 5px;
-  border: 5px solid #d19b30;
-}
-
-nav ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-nav li {
-display: inline-block;
-
-margin: 0.5px;
-}
-
-nav a {
-  color: #444;
-  text-decoration: none;
-  text-transform: uppercase;
-
-}
-
-nav a:hover {
-  color: #000;
 }
 
 h1 {
@@ -93,4 +60,32 @@ iframe {
 .Speisekarte label {
   font-size: 20px;
   margin: 20px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+nav li {
+  float: left;
+}
+
+nav li  a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
 }
