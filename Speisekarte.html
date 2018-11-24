@@ -5,30 +5,23 @@
   <link rel="stylesheet" href="style.css">
   <meta charset="UTF-8" />
   <title>Da Salvo - Speisekarte</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 </head>
 
 <body>
-<main>
-
-
-  <!-- NAVIGATION -->
-    <nav>
-    <ul>
-      <li><a href="Startseite.html">Startseite</a></li>
-      <li><a class="active" href="Speisekarte.html">Speisekarte</a></li>
-      <li><a href="Kunde.html">Kunde</a></li>
-      <li><a href="Bäcker.html">Bäcker</a></li>
-      <li><a href="Fahrer.html">Fahrer</a></li>
-      <li style="float:right"><a href="Impressum.html">Impressum</a></li>
-    </ul>
+  <nav class="topnav">
+    <div class="main">
+      <a href="Startseite.html">Startseite</a>
+      <a class="active" href="Speisekarte.html">Speisekarte</a>
+      <a href="Kunde.html">Kunde</a>
+      <a href="Bäcker.html">Bäcker</a>
+      <a href="Fahrer.html">Fahrer</a>
+      <a style="float:right" href="Impressum.html">Impressum</a>
+    </div>
   </nav>
   <!-- Speisekarte -->
-  <section>
+  <div class="main">
     <h2>Speisekarte</h2>
     <ol class="Speisekarte">
-
       <li id="margherita" data-price="4.30" data-name="Pizza Margherita">
         <img src="http://www.eccopizzaepasta.com/images/pizza_new_ok.png?crc=4173385462" alt="">
       </li>
@@ -46,16 +39,16 @@
       </li>
       <label for="speziale">Pizza Speziale - 5,80€</label>
     </ol>
-  </section>
+  </div>
   <!--Warenkorb -->
-  <section>
+  <div class="main warenkorb">
     <h2>Warenkorb</h2>
     <textarea name="warenkorb" rows="8" cols="80"></textarea> <br>
     Preis: 13,40€ <br>
-    <button>Warenkorb leeren</button>
-  </section>
+    <button id="emptyCart">Warenkorb leeren</button>
+  </div>
   <!-- Formular -->
-  <section>
+  <div class="main formular">
     <h2>Ihre Daten</h2>
     <form>
       <fieldset>
@@ -80,7 +73,7 @@
         <button>Senden</button>
       </fieldset>
     </form>
-  </section>
+  </div>
   </main>
 </body>
 

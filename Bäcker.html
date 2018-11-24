@@ -5,25 +5,21 @@
   <link rel="stylesheet" href="style.css">
   <meta charset="UTF-8" />
   <title>Da Salvo - Bäcker</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-  </head>
+</head>
 
 <body>
-  <main>
-  <!-- NAVIGATION -->
-  <nav>
-    <ul>
-      <li><a href="Startseite.html">Startseite</a></li>
-      <li><a href="Speisekarte.html">Speisekarte</a></li>
-      <li><a href="Kunde.html">Kunde</a></li>
-      <li><a class="active" href="Bäcker.html">Bäcker</a></li>
-      <li><a href="Fahrer.html">Fahrer</a></li>
-      <li style="float:right"><a href="Impressum.html">Impressum</a></li>
-    </ul>
+  <nav class="topnav">
+    <div class="main">
+      <a href="Startseite.html">Startseite</a>
+      <a href="Speisekarte.html">Speisekarte</a>
+      <a href="Kunde.html">Kunde</a>
+      <a class="active" href="Bäcker.html">Bäcker</a>
+      <a href="Fahrer.html">Fahrer</a>
+      <a style="float:right" href="Impressum.html">Impressum</a>
+    </div>
   </nav>
   <!-- Bäckermenü -->
-  <section>
+  <div class="main">
     <h2>Bäcker</h2>
     bestellt / im Ofen / fertig <br>
     <form id="kundenform" action="https://wwwold.fbi.h-da.de/cgi-bin/Echo.pl">
@@ -31,8 +27,7 @@
       Pizza Salami <input type="radio" name="salami" checked value="bestellt"> <input type="radio" name="salami" value="imOfen"> <input type="radio" name="salami" value="fertig"><br>
       <input type="submit" value="Aktualisieren"></input>
     </form>
-  </section>
-</main>
+  </div>
 </body>
 
 </html>

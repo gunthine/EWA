@@ -1,38 +1,75 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
 body {
-  font-size: 62.5%; <!-- weil 16 * 62.5% = 10 --> 1.6em = 16px -->
   margin: 0;
   padding: 0;
-  background-image: url("https://images6.alphacoders.com/412/412086.jpg");
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center center;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
 }
 
-main {
-  font-size: 1.6em;
-  font-family: 'Lato', sans-serif;
-  padding: 2em;
-  margin-left: 100px;
-  margin-right: 100px;
-  width: auto;
-  height: auto;
-  background-color: white;
-  opacity: 0.9;
+a {
+  color:black;
 }
 
-@media screen and (max-width: 900px) {
-  main {
-    margin-left: auto;
-    margin-right: auto;
-  }
+p {
+  text-align:center;
+}
+
+.topnav{
+  background-color: #333;
+  margin: 0;
+  opacity: 0.7;
+  font-size: 20px;
+}
+
+.topnav a {
+  display: inline-block;
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.topnav a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+.main {
+  width: 1200px;
+  margin: auto;
 }
 
 h1 {
   text-align: center;
 }
 
-.kundenstatus input {
-  display: inline-block;
+article {
+  margin-bottom: 30px;
+}
+
+section {
+  margin: 20px 0px;
+  width: 50%;
+  float: left;
+  margin: 20px auto;
+}
+
+section a {
+  text-decoration: none;
+  font-size: 30px;
+  text-align: center;
+}
+
+section img {
+  width: 300px;
+  height: 200px;
+  display: block;
+  margin: auto auto;
 }
 
 .Speisekarte li{
@@ -48,35 +85,6 @@ h1 {
 
 }
 
-
-/*
-#margherita {
-  	background-image: url("http://www.eccopizzaepasta.com/images/pizza_new_ok.png?crc=4173385462");
-}
-
-
-
-#salami {
-  background-image: url("https://d1d8i24om29pt.cloudfront.net/static/desktop/products/pizza-salami.png");
-}
-
-
-#peperoni {
-  background-image: url("https://dlct0dt1hx57m.cloudfront.net/static/desktop/products/pizza-diabolo.png");
-}
-
-#speziale {
-  background-image: url("https://d1d8i24om29pt.cloudfront.net/static/desktop/products/pizza-spezial.png");
-}
-*/
-
-
-
-
-iframe {
-  margin-top: 10px;
-}
-
 .Speisekarte label {
   font-size: 20px;
   margin: 20px;
@@ -86,32 +94,8 @@ iframe {
   cursor: pointer;
 }
 
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
-
-nav li {
-  float: left;
-}
-
-nav li  a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-nav li a:hover:not(.active) {
-  background-color: #111;
-}
-
-.active {
-  background-color: #4CAF50;
+.kundenstatus input {
+  display: inline-block;
 }
 
 input[type=submit] {
