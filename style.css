@@ -7,6 +7,7 @@ body {
   padding: 0;
   font-size: 16px;
   font-family: Arial, sans-serif;
+  background-color: #f2f2f2
 }
 
 a {
@@ -72,37 +73,63 @@ section img {
   margin: auto auto;
 }
 
-.Speisekarte li{
- margin: 0;
+.speisekarte {
+  width: 55%;
+  float: left;
+  margin: 0;
+}
+
+.speisekarte ol {
+  margin: 0;
+  padding: 0;
+}
+
+.speisekarte li{
+ margin: 30px 0px;
  padding: none;
- margin-bottom: 10px;
  list-style: none;
 }
 
-.Speisekarte li img {
+.speisekarte img {
   width: 20%;
   height: auto;
-
+  margin: 0;
+  padding: 0;
 }
 
-.Speisekarte label {
-  font-size: 20px;
-  margin: 20px;
+.warenkorb {
+  width: 45%;
+  float: left;
 }
 
-.Speisekarte li img:hover {
-  cursor: pointer;
+.warenkorb textarea {
+  margin: 0;
+  padding: 0;
+  width: 540px;
+  height: 200px;
 }
 
 .kundenstatus input {
   display: inline-block;
 }
 
-input[type=submit] {
-  padding: 10px;
-margin-top: 2em;
-margin-left: 2px;
-margin-right: 2px;
-border: none;
-cursor: pointer;
+.form {
+  float: left;
+  width: 45%;
+}
+
+.form input[type=text] {
+  padding: 5px 0px;
+  margin: 4px 0px;
+  width: 540px;
+}
+
+.form input[type=submit] {
+    background-color: green;
+    color: white;
+    width: 20%;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    cursor: pointer;
 }

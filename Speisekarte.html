@@ -20,61 +20,46 @@
   </nav>
   <!-- Speisekarte -->
   <div class="main">
-    <h2>Speisekarte</h2>
-    <ol class="Speisekarte">
-      <li id="margherita" data-price="4.30" data-name="Pizza Margherita">
-        <img src="http://www.eccopizzaepasta.com/images/pizza_new_ok.png?crc=4173385462" alt="">
-      </li>
-      <label for="margherita">Pizza Magherita - 4,30€</label>
-      <li id="salami" data-price="4.80" data-name="Pizza Salami">
-        <img src="https://d1d8i24om29pt.cloudfront.net/static/desktop/products/pizza-salami.png" alt="">
-      </li>
-      <label for="salami">Pizza Salami - 4,80€</label>
-      <li id="peperoni" data-price="4.80" data-name="Pizza Peperoni">
-        <img src="https://dlct0dt1hx57m.cloudfront.net/static/desktop/products/pizza-diabolo.png" alt="">
-      </li>
-      <label for="peperoni">Pizza Peperoni - 4,80€</label>
-      <li id="speziale" data-price="5.80" data-name="Pizza Speziale">
-        <img src="https://d1d8i24om29pt.cloudfront.net/static/desktop/products/pizza-spezial.png" alt="">
-      </li>
-      <label for="speziale">Pizza Speziale - 5,80€</label>
-    </ol>
-  </div>
-  <!--Warenkorb -->
-  <div class="main warenkorb">
-    <h2>Warenkorb</h2>
-    <textarea name="warenkorb" rows="8" cols="80"></textarea> <br>
-    Preis: 13,40€ <br>
-    <button id="emptyCart">Warenkorb leeren</button>
-  </div>
-  <!-- Formular -->
-  <div class="main formular">
-    <h2>Ihre Daten</h2>
-    <form>
-      <fieldset>
-        <label>Vorname*:
-          <input type="text" id="vorname" name="Vorname" required />
-        </label><br>
-        <label>Nachname*:
-          <input type="text" id="nachname" name="Nachname" required />
-        </label><br>
-        <label>Adresse*:
-          <input type="text" id="adresse" name="Adresse" required />
-        </label><br>
-        <label>Hausnummer*:
-          <input type="text" id="hausnummer" name="Hausnummer" required />
-        </label><br>
-        <label>PLZ*:
-          <input type="text" id="plz" name="PLZ" required />
-        </label><br>
-        <label>Ort*:
-          <input type="text" id="ort" name="Ort" required />
-        </label><br>
-        <button>Senden</button>
-      </fieldset>
+    <div class="speisekarte">
+      <h2>Speisekarte</h2>
+      <ol>
+        <li id="margherita" data-price="4.30" data-name="Pizza Margherita">
+          <img src="http://www.eccopizzaepasta.com/images/pizza_new_ok.png?crc=4173385462">
+          <label for="margherita">Pizza Magherita - 4,30€</label>
+        </li>
+        <li id="salami" data-price="4.80" data-name="Pizza Salami">
+          <img src="https://d1d8i24om29pt.cloudfront.net/static/desktop/products/pizza-salami.png">
+          <label for="salami">Pizza Salami - 4,80€</label>
+        </li>
+        <li id="peperoni" data-price="4.80" data-name="Pizza Peperoni">
+          <img src="https://dlct0dt1hx57m.cloudfront.net/static/desktop/products/pizza-diabolo.png">
+          <label for="peperoni">Pizza Peperoni - 4,80€</label>
+        </li>
+        <li id="speziale" data-price="5.80" data-name="Pizza Speziale">
+          <img src="https://d1d8i24om29pt.cloudfront.net/static/desktop/products/pizza-spezial.png">
+          <label for="speziale">Pizza Speziale - 5,80€</label>
+        </li>
+      </ol>
+    </div>
+    <!--Warenkorb -->
+    <div class="warenkorb">
+      <h2>Warenkorb</h2>
+      <textarea name="warenkorb"></textarea> <br>
+      <button id="emptyCart">Warenkorb leeren</button>
+      <p>Preis: 13,40€</p>
+    </div>
+    <!-- Formular -->
+    <form class="form" action="index.html" method="post">
+      <h2>Ihre Daten</h2>
+      <input type="text" name="vorname" placeholder="Vorname"> <br>
+      <input type="text" name="nachname" placeholder="Nachname"> <br>
+      <input type="text" name="adresse" placeholder="Adresse"><br>
+      <input type="text" name="ort" placeholder="Ort"><br>
+      <input type="text" name="plz" placeholder="PLZ"><br>
+      <input type="submit" name="submit" value="Bestellen">
     </form>
+
   </div>
-  </main>
 </body>
 
 </html>
