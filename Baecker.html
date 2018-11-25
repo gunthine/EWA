@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 
 <head>
   <link rel="stylesheet" href="style.css">
   <meta charset="UTF-8" />
-  <title>Da Salvo - Kunde</title>
+  <title>Da Salvo - Bäcker</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-</head>
+  </head>
 
 <body>
   <main>
-
-
   <!-- NAVIGATION -->
   <div class="jumbotron" style="margin-bottom:0px">
     <h1>Pizzeria Da Salvo Online Bestellung</h1>
@@ -43,13 +41,20 @@
       </ul>
   </div>
     </nav>
-
-    <!-- NAV -->
-  </main>
-
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <!-- Bäckermenü -->
+  <section>
+    <h2>Bäcker</h2>
+    bestellt / im Ofen / fertig <br>
+    <form id="kundenform" action="https://wwwold.fbi.h-da.de/cgi-bin/Echo.pl">
+      Pizza Margherita <input type="radio" name="margherita" checked value="bestellt"> <input type="radio" name="margherita" value="imOfen"> <input type="radio" name="margherita" value="fertig"><br>
+      Pizza Salami <input type="radio" name="salami" checked value="bestellt"> <input type="radio" name="salami" value="imOfen"> <input type="radio" name="salami" value="fertig"><br>
+      <input type="submit" value="Aktualisieren"></input>
+    </form>
+  </section>
+</main>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 
 </html>
