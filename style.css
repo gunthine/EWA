@@ -64,20 +64,18 @@ iframe {
 .navbar  {
   margin-bottom: 2rem;
 }
-/*
 
 
-nav li a:hover:not(.active) {
-  background-color: #111;
+.btn {
+  margin-top: 5px;
 }
 
-.active {
-  background-color: #4CAF50;
+#wahrenkorb{
+  resize: none;
+  font-size: 20px;
+  font-family: 'Bree Serif', serif;
+  font-style: italic;
 }
-
-*/
-
-
 
 input[type=submit] {
   padding: 10px;
@@ -97,7 +95,14 @@ textarea {
   main {
     margin-left: auto;
     margin-right: auto;
+    padding-left: 0px;
+    padding-right: 0px;
+
   }
+.centerpos {
+  padding-left: 10px;
+  padding-right: 10px;
+}
 
 }
 
