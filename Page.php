@@ -49,7 +49,11 @@ abstract class Page
      */
     protected function __construct()
     {
-        //$this->_database = new MySQLi("127.0.0.1:3306", "nima", "nima123", "Pizza");
+        $this->_database = new MySQLi("127.0.0.1:3306", "nima", "nima123", "Pizza");
+        // Check connection
+        if ($this->_database->connect_error) {
+          die("Connection failed: " . $this->_database->connect_error);
+}
     }
 
     /**
@@ -59,7 +63,7 @@ abstract class Page
      */
     protected function __destruct()
     {
-        // to do: close database
+        $this->_database->close();
     }
 
     /**

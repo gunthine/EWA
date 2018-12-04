@@ -69,7 +69,18 @@ class Speisekarte extends Page
      */
     protected function getViewData()
     {
-        // to do: fetch data for this view from the database
+      $sql = "SELECT * FROM Pizza";
+      $result = $this->_database->query($sql);
+
+      if ($result->num_rows > 0) {
+      // output data of each row
+      while($row = $result->fetch_assoc()) {
+        echo "Name: " . $row["Name"]. " - Preis: " . $row["Preis"];
+    }
+} else {
+    echo "0 results";
+}
+
     }
 
     /**
@@ -83,8 +94,8 @@ class Speisekarte extends Page
      */
     protected function generateView()
     {
-        $this->getViewData();
         $this->generatePageHeader("Speisekarte");
+        $this->getViewData();
         echo <<<EOT
         <div class="main">
           <div class="speisekarte">
