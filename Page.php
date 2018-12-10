@@ -86,6 +86,7 @@ abstract class Page
           <head>
             <meta charset="utf-8">
             <link rel="stylesheet" href="css/style.css">
+            <script src="js/javascript.js"></script>
             <title><?= isset($headline) ? $headline : "Default Title"?></title>
           </head>
           <body>
