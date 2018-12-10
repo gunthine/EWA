@@ -33,8 +33,9 @@ require_once './Page.php';
  */
 class Speisekarte extends Page
 {
-    // to do: declare reference variables for members
-    // representing substructures/blocks
+    protected $pizzaName = array();
+    protected $pizzaPreis = array();
+    protected $pizzaBild = array();
 
     /**
      * Instantiates members (to be defined above).
@@ -69,13 +70,15 @@ class Speisekarte extends Page
      */
     protected function getViewData()
     {
-      $sql = "SELECT * FROM Pizza";
+      $sql = "SELECT pizzaname, preis, bilddatei FROM angebot";
       $result = $this->_database->query($sql);
 
       if ($result->num_rows > 0) {
       // output data of each row
       while($row = $result->fetch_assoc()) {
-        echo "Name: " . $row["Name"]. " - Preis: " . $row["Preis"];
+        array_push($this->pizzaName, $row["pizzaname"]);
+        array_push($this->pizzaPreis, $row["preis"]);
+        array_push($this->pizzaBild, $row["bilddatei"]);
     }
 } else {
     echo "0 results";
@@ -94,30 +97,25 @@ class Speisekarte extends Page
      */
     protected function generateView()
     {
-        $this->generatePageHeader("Speisekarte");
-        $this->getViewData();
-        echo <<<EOT
+      $this->getViewData();
+      $this->generatePageHeader("Speisekarte");
+      echo <<<EOT
         <div class="main">
           <div class="speisekarte">
             <h2>Speisekarte</h2>
-            <ol>
-              <li id="margherita" data-price="4.30" data-name="Pizza Margherita">
-                <img src="http://www.eccopizzaepasta.com/images/pizza_new_ok.png?crc=4173385462">
-                <label for="margherita">Pizza Magherita - 4,30€</label>
-              </li>
-              <li id="salami" data-price="4.80" data-name="Pizza Salami">
-                <img src="https://d1d8i24om29pt.cloudfront.net/static/desktop/products/pizza-salami.png">
-                <label for="salami">Pizza Salami - 4,80€</label>
-              </li>
-              <li id="peperoni" data-price="4.80" data-name="Pizza Peperoni">
-                <img src="https://dlct0dt1hx57m.cloudfront.net/static/desktop/products/pizza-diabolo.png">
-                <label for="peperoni">Pizza Peperoni - 4,80€</label>
-              </li>
-              <li id="speziale" data-price="5.80" data-name="Pizza Speziale">
-                <img src="https://d1d8i24om29pt.cloudfront.net/static/desktop/products/pizza-spezial.png">
-                <label for="speziale">Pizza Speziale - 5,80€</label>
-              </li>
-            </ol>
+EOT;
+        // generate HTML list
+        echo "</ol>";
+        $li_items = count($this->pizzaName);
+
+        for($i = 0; $i < $li_items; $i++) {
+          echo '<li id="' . $this->pizzaName[$i] . '" data-price="' . $this->pizzaPreis[$i] . '">';
+          echo '<img src="' . $this->pizzaBild[$i] . '">';
+          echo 'Pizza ' . $this->pizzaName[$i] . ' - ' . $this->pizzaPreis[$i] . '€';
+        }
+        echo '</ol>';
+
+        echo <<<EOT
           </div>
           <!--Warenkorb -->
           <div class="warenkorb">
