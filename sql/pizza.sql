@@ -3,10 +3,9 @@
 /*==============================================================*/
 create table ANGEBOT
 (
-   PIZZANAME            varchar(20) not null  comment '',
-   PREIS                float not null  comment '',
-   BILDDATEI            varchar(200) comment '',
-   primary key (PIZZANAME)
+   PIZZANAME            varchar(20) NOT NULL PRIMARY KEY,
+   PREIS                float not null,
+   BILDDATEI            varchar(100)
 );
 
 /*==============================================================*/
@@ -14,11 +13,10 @@ create table ANGEBOT
 /*==============================================================*/
 create table BESTELLTEPIZZA
 (
-   BESTELUNGID          int not null  comment '',
-   PIZZANAME            varchar(20) not null  comment '',
-   PIZZAID              int not null  comment '',
-   SATUS                char(1)  comment '',
-   primary key (BESTELUNGID, PIZZANAME, PIZZAID)
+   PIZZAID              int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   BESTELLUNGID         int not null,
+   PIZZANAME            varchar(20) not null,
+   STATUS               char(1)
 );
 
 /*==============================================================*/
@@ -26,13 +24,15 @@ create table BESTELLTEPIZZA
 /*==============================================================*/
 create table BESTELLUNG
 (
-   BESTELUNGID          int PRIMARY KEY AUTO INCREMENT not null comment '',
-   ADRESSE              varchar(60) not null  comment '',
-   BESTELLZEITPUNKT     datetime not null  comment '',
+   BESTELUNGID          int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   VORNAME				varchar(20) not null,
+   NACHNAME				varchar(20) not null,
+   ADRESSE              varchar(60) not null,
+   BESTELLZEITPUNKT     datetime not null
 );
 
-alter table BESTELLTEPIZZA add constraint FK_BESTELLT_WIRD_ANGEBOT foreign key (PIZZANAME)
+alter table BESTELLTEPIZZA add constraint bestelltepizza_angebot foreign key (PIZZANAME)
       references ANGEBOT (PIZZANAME) on delete restrict on update restrict;
 
-alter table BESTELLTEPIZZA add constraint FK_BESTELLT_WIRD_ZUGE_BESTELLU foreign key (BESTELUNGID)
+alter table BESTELLTEPIZZA add constraint bestelltepizza_bestellung foreign key (BESTELUNGID)
       references BESTELLUNG (BESTELUNGID) on delete restrict on update restrict;
