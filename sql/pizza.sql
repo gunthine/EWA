@@ -26,10 +26,9 @@ create table BESTELLTEPIZZA
 /*==============================================================*/
 create table BESTELLUNG
 (
-   BESTELUNGID          int not null  comment '',
+   BESTELUNGID          int PRIMARY KEY AUTO INCREMENT not null comment '',
    ADRESSE              varchar(60) not null  comment '',
    BESTELLZEITPUNKT     datetime not null  comment '',
-   primary key (BESTELUNGID)
 );
 
 alter table BESTELLTEPIZZA add constraint FK_BESTELLT_WIRD_ANGEBOT foreign key (PIZZANAME)

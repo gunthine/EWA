@@ -1,27 +1,15 @@
 <?php
-/**
- * PHP Version 5
- *
- * @category File
- * @package  Pizzaservice
- * @author   Bernhard Kreling, <b.kreling@fbi.h-da.de>
- * @author   Ralf Hahn, <ralf.hahn@h-da.de>
- * @license  http://www.h-da.de  none
- * @Release  1.2
- * @link     http://www.fbi.h-da.de
- */
-
 require_once './Page.php';
-require_once './SpeisekarteListe.php';
 
-// class Speisekarte
 class Speisekarte extends Page
 {
+    protected $pizzaName = array();
+    protected $pizzaPreis = array();
+    protected $pizzaBild = array();
 
     protected function __construct()
     {
         parent::__construct();
-        // to do: instantiate members representing substructures/blocks
     }
 
 
@@ -30,48 +18,63 @@ class Speisekarte extends Page
         parent::__destruct();
     }
 
-
     protected function getViewData()
     {
-    }
+        $sql = "SELECT pizzaname, preis, bilddatei FROM angebot";
+        $result = $this->_database->query($sql);
 
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                array_push($this->pizzaName, $row["pizzaname"]);
+                array_push($this->pizzaPreis, $row["preis"]);
+                array_push($this->pizzaBild, $row["bilddatei"]);
+            }
+        } else {
+            echo "0 results";
+        }
+    }
 
     protected function generateView()
     {
         $this->getViewData();
         $this->generatePageHeader("Speisekarte");
-        echo <<<EOT
-        <div class="main">
+        echo<<<EOT
+        <div class="wrapper">
+<section class="speisekarte">
+    <h2>Speisekarte</h2>
+    <ol>
 EOT;
-        // create list of menu
-        $speisekarteListe = new SpeisekarteListe($this->_database);
-        $speisekarteListe->generateView("speisekarte");
-        echo <<<EOT
-          <!--Warenkorb -->
-          <div class="warenkorb">
-            <h2>Warenkorb</h2>
-            <textarea id="warenkorbTable"></textarea>
-            <button onClick="emptyCard()">Warenkorb leeren</button>
-            <p id="warenkorb-preis" data-price="0">Preis: 0€</p>
-          </div>
-          <!-- Formular -->
-          <section class="form">
-              <h2>Ihre Daten</h2>
-            <form action="index.html" method="post">
-              <input type="text" name="vorname" placeholder="Vorname"> <br>
-              <input type="text" name="nachname" placeholder="Nachname"> <br>
-              <input type="text" name="adresse" placeholder="Adresse"><br>
-              <input type="text" name="ort" placeholder="Ort"><br>
-              <input type="text" name="plz" placeholder="PLZ"><br>
-              <input type="submit" name="submit" value="Bestellen">
-            </form>
-          </section>
 
+        $li_items = count($this->pizzaName);
+        for($i = 0; $i < $li_items; $i++) {
+            $id = $this->pizzaName[$i];
+            $pizzaPreis = $this->pizzaPreis[$i];
+            echo '<li>';
+            echo '<img src="' . $this->pizzaBild[$i] . '" id="' . $id . '" onclick="addPizza(this.id)" data-pizzacost="' . $pizzaPreis . '">';
+            echo '<button>Pizza ' . $id . ' - ' . $pizzaPreis . '€</button></li>';
+        }
 
-        </div>
-      </body>
+        echo<<<EOT
+    </ol>
+</section>
 
-      </html>
+<section class="form">
+    <form action="Speisekarte.php" method="post">
+        <h2>Warenkorb</h2>
+        <select id="shopping-cart" multiple name="pizza[]">
+            <!-- shopping cart elements-->
+        </select>
+        <button>Warenkorb leeren</button>
+        <button>Elemente entfernen</button>
+        <p id="totalCost" data-totalcost="0">Preis: 0€</p>
+        <h2>Ihre Adresse</h2>
+        <input type="text" name="vorname" placeholder="Vorname"><br>
+        <input type="text" name="nachname" placeholder="Nachname"><br>
+        <input type="text" name="adresse" placeholder="Adresse"><br>
+        <input type="submit" name="submit" value="Bestellen">
+    </form>
+</section>
+</div>
 EOT;
         $this->generatePageFooter();
     }
@@ -79,8 +82,33 @@ EOT;
 
     protected function processReceivedData()
     {
-        parent::processReceivedData();
-        // to do: call processReceivedData() for all members
+        if (empty($_POST)) {
+            return;
+        }
+
+        $vorname = $_POST['vorname'];
+        $nachname = $_POST['nachname'];
+        $adresse = $_POST['adresse'];
+        $date = date('Y-m-d H:i:s');
+        $pizza = $_POST['pizza'];
+
+        $sql = "INSERT INTO bestellung(vorname, nachname, adresse, bestellzeitpunkt) VALUES('$vorname', '$nachname', '$adresse', '$date')";
+        if ($this->_database->query($sql) === TRUE) {
+            echo "New record created successfully ";
+        } else {
+            echo "Error: " . $sql . "<br>" . $this->_database->error;
+        }
+
+        $bestellungid = $this->_database->insert_id;
+        $li_items = count($pizza);
+        for ($i = 0; $i < $li_items; $i++) {
+            $sql = "INSERT INTO bestelltepizza(pizzaname, bestellungid, status) VALUES('$pizza[$i]', '$bestellungid', 'b')";
+            if ($this->_database->query($sql) === TRUE) {
+                echo "New record created successfully ";
+            } else {
+                echo "Error: " . $sql . "<br>" . $this->_database->error;
+            }
+        }
     }
 
 
@@ -98,5 +126,3 @@ EOT;
 }
 
 Speisekarte::main();
-
-
