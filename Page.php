@@ -63,4 +63,15 @@ EOT;
                 ("Bitte schalten Sie magic_quotes_gpc in php.ini aus!");
         }
     }
+
+    protected function printStatus($char) {
+        switch ($char) {
+            case 'b': return 'bestellt';
+            case 'o': return 'im Ofen';
+            case 'f': return 'fertig';
+            case 'i': return 'in Zustellung';
+            case 'z': return 'zugestellt';
+        }
+        return $char;
+    }
 }
