@@ -43,7 +43,7 @@ abstract class Page
         <a href="Fahrer.php">Fahrer</a>
         <a style="float:right" href="Impressum.php">Impressum</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a>
-    </nav>
+    </nav>\n
 EOT;
 }
 

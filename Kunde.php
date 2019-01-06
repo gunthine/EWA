@@ -9,6 +9,7 @@ class Kunde extends Page
     protected $pizzaname = array();
     protected $bilddatei = array();
     protected $status = array();
+    protected $available;
 
     protected function __construct()
     {
@@ -34,8 +35,9 @@ class Kunde extends Page
                 array_push($this->bilddatei, $row["bilddatei"]);
                 array_push($this->status, $row["status"]);
             }
+            $this->available = true;
         } else {
-            echo "0 results";
+            $this->available = false;
         }
     }
 
@@ -45,23 +47,28 @@ class Kunde extends Page
         $this->generatePageHeader('Kunde');
         echo <<<EOT
 <h2>Kunde</h2>
-<section class="kunden-wrapper">
+<section class="kunden-wrapper">\n
 EOT;
-
-    $li_items = count($this->vorname);
-    for ($i = 0; $i < $li_items; $i++) {
-        echo '<div class="bestelltepizza">';
-        echo '<img src="' . $this->bilddatei[$i] . '">';
-        echo '<div class="customerdata">';
-        echo '<h3>' . $this->pizzaname[$i] . '</h3>';
-        echo '<p>' . $this->vorname[$i] . ' ' . $this->nachname[$i] . ', ' . $this->adresse[$i] . '</p>';
-        echo '<p>Status: ' . $this->printStatus($this->status[$i]) . '</p>';
-        echo '</div>';
-        echo '</div>';
+    if ($this->available) {
+        $li_items = count($this->vorname);
+        for ($i = 0; $i < $li_items; $i++) {
+            echo<<<EOT
+<div class="bestelltepizza">
+    <img src="{$this->bilddatei[$i]}">
+    <div class="customerdata">
+        <h3>{$this->pizzaname[$i]}</h3>
+        <p>{$this->vorname[$i]} {$this->nachname[$i]}, {$this->adresse[$i]}</p>
+        <p>Status: {$this->printStatus($this->status[$i])}</p>
+    </div>
+</div>\n
+EOT;
+        }
+    } else {
+        echo '<h1>Keine Pizzen bestellt...';
     }
 
     echo<<<EOT
-</section>
+</section>\n
 EOT;
         $this->generatePageFooter();
     }
