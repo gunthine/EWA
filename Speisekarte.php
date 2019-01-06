@@ -42,20 +42,23 @@ class Speisekarte extends Page
         <div class="wrapper">
 <section class="speisekarte">
     <h2>Speisekarte</h2>
-    <ol>
+    <ul>\n
 EOT;
 
         $li_items = count($this->pizzaName);
         for($i = 0; $i < $li_items; $i++) {
             $id = $this->pizzaName[$i];
             $pizzaPreis = $this->pizzaPreis[$i];
-            echo '<li>';
-            echo '<img src="' . $this->pizzaBild[$i] . '" id="' . $id . '" onclick="addPizza(this.id)" data-pizzacost="' . $pizzaPreis . '">';
-            echo '<button>Pizza ' . $id . ' - ' . $pizzaPreis . '€</button></li>';
+            echo <<<EOT
+<li>
+    <img src="{$this->pizzaBild[$i]}" id="{$id}" onclick="addPizza(this.id)" data-pizzacost="{$pizzaPreis}">
+    <button>Pizza {$id} - {$pizzaPreis} €</button>
+</li>\n
+EOT;
         }
 
         echo<<<EOT
-    </ol>
+    </ul>
 </section>
 
 <section class="form">
@@ -74,7 +77,7 @@ EOT;
         <input type="submit" name="submit" value="Bestellen">
     </form>
 </section>
-</div>
+</div>\n
 EOT;
         $this->generatePageFooter();
     }
