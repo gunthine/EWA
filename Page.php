@@ -29,7 +29,8 @@ abstract class Page
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/$headline.css">
     <script src="js/javascript.js"></script>
     <title>$headline</title>
   </head>

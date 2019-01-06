@@ -42,7 +42,7 @@ class Speisekarte extends Page
         <div class="wrapper">
 <section class="speisekarte">
     <h2>Speisekarte</h2>
-    <ol>
+    <ul>
 EOT;
 
         $li_items = count($this->pizzaName);
@@ -55,7 +55,7 @@ EOT;
         }
 
         echo<<<EOT
-    </ol>
+    </ul>
 </section>
 
 <section class="form">
