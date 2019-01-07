@@ -1,9 +1,10 @@
 // Pizzen zum Wahrenkorb hinzufügen
 function addPizza(id) {
     // add pizza
+    var pizzaName = document.getElementById(id).name;
     var option = document.createElement("option");
-    option.text = id;
-    option.value = id;
+    option.text = pizzaName;
+    option.value = pizzaName;
     document.getElementById("shopping-cart").add(option);
 
     // update costs
@@ -14,10 +15,12 @@ function addPizza(id) {
     document.getElementById("totalCost").innerHTML = "Preis: " + totalCost + "€";
 }
 
-function emptyCard() {
-    document.getElementById("warenkorbTable").value="";
-    document.getElementById("warenkorb-preis").dataset.price = 0;
-    document.getElementById("warenkorb-preis").innerHTML = "Preis: 0€";
+function selectAll() {
+    var selectBox = document.getElementById("shopping-cart");
+    for (var i = 0; i < selectBox.options.length; i++)
+    {
+        selectBox.options[i].selected = true;
+    }
 }
 
 /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
