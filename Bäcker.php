@@ -21,7 +21,7 @@ class Baecker extends Page
 
     protected function getViewData()
     {
-        $sql = "SELECT bilddatei, pizzaname, pizzaid, status FROM bestelltepizza NATURAL JOIN angebot WHERE status != 'f' OR status != 'z';";
+        $sql = "SELECT bilddatei, pizzaname, pizzaid, status FROM bestelltepizza NATURAL JOIN angebot WHERE status != 'i' AND status != 'z'";
         $result = $this->_database->query($sql);
 
         if ($result->num_rows > 0) {

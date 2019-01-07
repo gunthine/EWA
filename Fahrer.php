@@ -43,7 +43,7 @@ class Fahrer extends Page
         $this->generatePageHeader("Fahrer");
         echo <<<EOT
 <h2>Fahrer</h2>
-<form class="baecker-wrapper">
+<form class="baecker-wrapper" action="Fahrer.php" method="post">
 EOT;
         if ($this->available) {
             $li_items = count($this->bilddatei);
@@ -54,11 +54,19 @@ EOT;
         <div class="pizzadata">
             <h3>{$this->pizzaname[$i]}, id: {$this->pizzaid[$i]}</h3>
             <label>
-                <input type="radio" name="{$this->pizzaid[$i]}" value="f">
+                <input type="radio" name="{$this->pizzaid[$i]}" value="f" 
+EOT;
+                if ($this->status[$i] == 'f') {echo 'checked';}
+                echo<<<EOT
+>
                 fertig
             </label>
             <label>
-                <input type="radio" name="{$this->pizzaid[$i]}" value="i">
+                <input type="radio" name="{$this->pizzaid[$i]}" value="i"
+EOT;
+                if ($this->status[$i] == 'i') {echo 'checked';}
+                echo<<<EOT
+>
                 in Zustellung
             </label>
             <label>
@@ -85,7 +93,14 @@ EOT;
 
     protected function processReceivedData()
     {
-
+        foreach ($_POST as $key => $value) {
+            $sql = "UPDATE bestelltepizza SET status = '$value' WHERE pizzaid = '$key'";
+            if ($this->_database->query($sql) === TRUE) {
+                echo "New record created successfully ";
+            } else {
+                echo "Error: " . $sql . "<br>" . $this->_database->error;
+            }
+        }
     }
 
     public static function main()

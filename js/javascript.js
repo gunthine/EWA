@@ -23,6 +23,25 @@ function selectAll() {
     }
 }
 
+function emptyCard() {
+    var selectBox = document.getElementById("shopping-cart");
+    var length = selectBox.options.length;
+    for (var i = 0; i < length; i++)
+    {
+        selectBox.remove(0);
+    }
+}
+
+function removeSelected() {
+    var selectBox = document.getElementById("shopping-cart");
+    var length = selectBox.options.length;
+    for (var i = 0; i < length; i++)
+    {
+        selectBox.remove(0);
+    }
+}
+
+
 /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
 function myFunction() {
     var x = document.getElementById("myTopnav");

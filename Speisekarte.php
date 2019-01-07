@@ -67,8 +67,8 @@ EOT;
         <select id="shopping-cart" multiple name="pizza[]">
             <!-- shopping cart elements-->
         </select>
-        <button>Warenkorb leeren</button>
-        <button>Elemente entfernen</button>
+        <button type="button" onclick="emptyCard()">Warenkorb leeren</button>
+        <button type="button" onclick="removeSelected()">Elemente entfernen</button>
         <p id="totalCost" data-totalcost="0">Preis: 0€</p>
         <h2>Ihre Adresse</h2>
         <input type="text" name="vorname" placeholder="Vorname" required><br>
