@@ -51,8 +51,8 @@ EOT;
             $pizzaPreis = $this->pizzaPreis[$i];
             echo <<<EOT
 <li>
-    <img src="{$this->pizzaBild[$i]}" id="{$id}" onclick="addPizza(this.id)" data-pizzacost="{$pizzaPreis}">
-    <button>Pizza {$id} - {$pizzaPreis} €</button>
+    <img src="{$this->pizzaBild[$i]}" id="{$id}" name="{$id}" onclick="addPizza(this.id)" data-pizzacost="{$pizzaPreis}">
+    <button id="button{$id}" name="{$id}" data-pizzacost="{$pizzaPreis}" onclick="addPizza(this.id)">Pizza {$id} - {$pizzaPreis} €</button>
 </li>\n
 EOT;
         }
@@ -71,10 +71,10 @@ EOT;
         <button>Elemente entfernen</button>
         <p id="totalCost" data-totalcost="0">Preis: 0€</p>
         <h2>Ihre Adresse</h2>
-        <input type="text" name="vorname" placeholder="Vorname"><br>
-        <input type="text" name="nachname" placeholder="Nachname"><br>
-        <input type="text" name="adresse" placeholder="Adresse"><br>
-        <input type="submit" name="submit" value="Bestellen">
+        <input type="text" name="vorname" placeholder="Vorname" required><br>
+        <input type="text" name="nachname" placeholder="Nachname" required><br>
+        <input type="text" name="adresse" placeholder="Adresse" required><br>
+        <input type="submit" name="submit" value="Bestellen" onclick="selectAll()">
     </form>
 </section>
 </div>\n

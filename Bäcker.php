@@ -52,7 +52,7 @@ EOT;
 <div class="bestelltepizza">
     <img src="{$this->bilddatei[$i]}">
         <div class="pizzadata">
-            <h3>{$this->pizzaname[$i]}, id: {$this->pizzaid[$i]}</h3>
+            <h3>{$this->pizzaname[$i]}, Bestellnummer: {$this->pizzaid[$i]}</h3>
             <label>
                 <input type="radio" name="{$this->pizzaid[$i]}" value="b">
                 bestellt
