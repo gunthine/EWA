@@ -17,6 +17,10 @@ h2 {
     margin: 0.5em 0;
 }
 
+.done {
+    background-color: lightgreen !important;
+}
+
 @media screen and (max-width: 767px ) {
     .bestelltepizza {
         width: 90%;

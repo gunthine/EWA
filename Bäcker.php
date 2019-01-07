@@ -43,7 +43,7 @@ class Baecker extends Page
         $this->generatePageHeader('Baecker');
         echo <<<EOT
 <h2>Bäcker</h2>
-<form class="baecker-wrapper">
+<form class="baecker-wrapper" action="Bäcker.php" method="post">
 EOT;
         if ($this->available) {
             $li_items = count($this->bilddatei);
@@ -54,20 +54,32 @@ EOT;
         <div class="pizzadata">
             <h3>{$this->pizzaname[$i]}, Bestellnummer: {$this->pizzaid[$i]}</h3>
             <label>
-                <input type="radio" name="{$this->pizzaid[$i]}" value="b">
+                <input type="radio" name="{$this->pizzaid[$i]}" 
+EOT;
+                if ($this->status[$i] == 'b') {echo 'checked ';}
+                echo<<<EOT
+value="b">
                 bestellt
             </label>
             <label>
-                <input type="radio" name="{$this->pizzaid[$i]}" value="o">
+                <input type="radio" name="{$this->pizzaid[$i]}" value="o" 
+EOT;
+                if ($this->status[$i] == 'o') {echo 'checked';}
+                echo<<<EOT
+>
                 im Ofen
             </label>
             <label>
-                <input type="radio" name="{$this->pizzaid[$i]}" value="f">
+                <input type="radio" name="{$this->pizzaid[$i]}" value="f"
+EOT;
+                if ($this->status[$i] == 'f') {echo 'checked';}
+                echo<<<EOT
+>
                 fertig
             </label>
             <p>Status: {$this->printStatus($this->status[$i])}</p>
         </div>
-</div>\n
+    </div>\n
 EOT;
             }
             echo<<<EOT
@@ -85,7 +97,14 @@ EOT;
 
     protected function processReceivedData()
     {
-
+        foreach ($_POST as $key => $value) {
+            $sql = "UPDATE bestelltepizza SET status = '$value' WHERE pizzaid = '$key'";
+            if ($this->_database->query($sql) === TRUE) {
+                echo "New record created successfully ";
+            } else {
+                echo "Error: " . $sql . "<br>" . $this->_database->error;
+            }
+        }
     }
 
     public static function main()
