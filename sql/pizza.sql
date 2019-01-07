@@ -24,7 +24,7 @@ create table BESTELLTEPIZZA
 /*==============================================================*/
 create table BESTELLUNG
 (
-   BESTELUNGID          int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   BESTELLUNGID          int NOT NULL AUTO_INCREMENT PRIMARY KEY,
    VORNAME				varchar(20) not null,
    NACHNAME				varchar(20) not null,
    ADRESSE              varchar(60) not null,
@@ -34,5 +34,5 @@ create table BESTELLUNG
 alter table BESTELLTEPIZZA add constraint bestelltepizza_angebot foreign key (PIZZANAME)
       references ANGEBOT (PIZZANAME) on delete restrict on update restrict;
 
-alter table BESTELLTEPIZZA add constraint bestelltepizza_bestellung foreign key (BESTELUNGID)
-      references BESTELLUNG (BESTELUNGID) on delete restrict on update restrict;
+alter table BESTELLTEPIZZA add constraint bestelltepizza_bestellung foreign key (BESTELLUNGID)
+      references BESTELLUNG (BESTELLUNGID) on delete restrict on update restrict;

@@ -64,7 +64,7 @@ EOT;
 EOT;
         }
     } else {
-        echo '<h1>Keine Pizzen bestellt...';
+        echo '<h1>Keine Pizzen bestellt...</h1>';
     }
 
     echo<<<EOT
