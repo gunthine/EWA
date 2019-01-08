@@ -26,24 +26,24 @@ abstract class Page
         echo <<<EOT
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/master.css">
-    <link rel="stylesheet" href="css/$headline.css">
-    <script src="js/javascript.js"></script>
-    <title>$headline</title>
-  </head>
-  <body>
-    <nav class="topnav" id="myTopnav">
-        <a href="index.php">Startseite</a>
-        <a href="Speisekarte.php">Speisekarte</a>
-        <a href="Kunde.php">Kunde</a>
-        <a href="Bäcker.php">Bäcker</a>
-        <a href="Fahrer.php">Fahrer</a>
-        <a style="float:right" href="Impressum.php">Impressum</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a>
-    </nav>\n
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="css/master.css"/>
+        <link rel="stylesheet" href="css/$headline.css"/>
+        <script src="js/javascript.js"></script>
+        <title>$headline</title>
+    </head>
+    <body>
+        <nav class="topnav" id="myTopnav">
+            <a href="index.php">Startseite</a>
+            <a href="Speisekarte.php">Speisekarte</a>
+            <a href="Kunde.php">Kunde</a>
+            <a href="Bäcker.php">Bäcker</a>
+            <a href="Fahrer.php">Fahrer</a>
+            <a style="float:right" href="Impressum.php">Impressum</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a>
+        </nav>\n
 EOT;
 }
 
@@ -51,7 +51,7 @@ EOT;
     protected function generatePageFooter()
     {
         echo<<<EOT
-</body>
+    </body>
 </html>
 EOT;
     }

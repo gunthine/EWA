@@ -42,53 +42,53 @@ class Baecker extends Page
         $this->getViewData();
         $this->generatePageHeader('Baecker');
         echo <<<EOT
-<h2>Bäcker</h2>
-<form class="baecker-wrapper" action="Bäcker.php" method="post">
+		<h1>Bäcker</h1>
+		<form class="baecker-wrapper" action="Bäcker.php" method="post">\n
 EOT;
         if ($this->available) {
             $li_items = count($this->bilddatei);
             for ($i = 0; $i < $li_items; $i++) {
                 echo<<<EOT
-<div class="bestelltepizza">
-    <img src="{$this->bilddatei[$i]}">
-        <div class="pizzadata">
-            <h3>{$this->pizzaname[$i]}, Bestellnummer: {$this->pizzaid[$i]}</h3>
-            <label>
-                <input type="radio" name="{$this->pizzaid[$i]}" 
+			<section class="bestelltepizza">
+			    <img src="{$this->bilddatei[$i]}" alt="{$this->pizzaname[$i]}">
+		        <div class="pizzadata">
+		            <h3>{$this->pizzaname[$i]}, Bestellnummer: {$this->pizzaid[$i]}</h3>
+		            <label>
+		                <input type="radio" name="{$this->pizzaid[$i]}" 
 EOT;
                 if ($this->status[$i] == 'b') {echo 'checked ';}
                 echo<<<EOT
 value="b">
-                bestellt
-            </label>
-            <label>
-                <input type="radio" name="{$this->pizzaid[$i]}" value="o" 
+            			bestellt
+		            </label>
+        			<label>
+            			<input type="radio" name="{$this->pizzaid[$i]}" value="o" 
 EOT;
                 if ($this->status[$i] == 'o') {echo 'checked';}
                 echo<<<EOT
 >
-                im Ofen
-            </label>
-            <label>
-                <input type="radio" name="{$this->pizzaid[$i]}" value="f"
+            			im Ofen
+        			</label>
+        			<label>
+            			<input type="radio" name="{$this->pizzaid[$i]}" value="f"
 EOT;
                 if ($this->status[$i] == 'f') {echo 'checked';}
                 echo<<<EOT
 >
-                fertig
-            </label>
-            <p>Status: {$this->printStatus($this->status[$i])}</p>
-        </div>
-    </div>\n
+            			fertig
+        			</label>
+        			<p>Status: {$this->printStatus($this->status[$i])}</p>
+    			</div>
+			</section>\n
 EOT;
             }
             echo<<<EOT
-<input type="submit" value="Aktualisieren">
-</form>
+			<input type="submit" value="Aktualisieren">
+		</form>\n
 EOT;
         } else {
             echo<<<EOT
-<h1>Keine Pizzen bestellt...</h1>
+<h2>Keine Pizzen bestellt...</h2>
 EOT;
 
         }

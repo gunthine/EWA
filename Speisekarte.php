@@ -39,10 +39,10 @@ class Speisekarte extends Page
         $this->getViewData();
         $this->generatePageHeader("Speisekarte");
         echo<<<EOT
-        <div class="wrapper">
-<section class="speisekarte">
-    <h2>Speisekarte</h2>
-    <ul>\n
+		<div class="wrapper">
+			<section class="speisekarte">
+				<h2>Speisekarte</h2>
+				<ul>\n
 EOT;
 
         $li_items = count($this->pizzaName);
@@ -50,34 +50,35 @@ EOT;
             $id = $this->pizzaName[$i];
             $pizzaPreis = $this->pizzaPreis[$i];
             echo <<<EOT
-<li>
-    <img src="{$this->pizzaBild[$i]}" id="{$id}" name="{$id}" onclick="addPizza(this.id)" data-pizzacost="{$pizzaPreis}">
-    <button id="button{$id}" name="{$id}" data-pizzacost="{$pizzaPreis}" onclick="addPizza(this.id)">Pizza {$id} - {$pizzaPreis} €</button>
-</li>\n
+					<li>
+						<img src="{$this->pizzaBild[$i]}" id="{$id}" alt="{$id}" onclick="addPizza(this.id)" data-pizzacost="{$pizzaPreis}" />
+						<button id="button{$id}" name="{$id}" data-pizzacost="{$pizzaPreis}" onclick="addPizza(this.id)">Pizza {$id} - {$pizzaPreis} €</button>
+					</li>\n
 EOT;
         }
 
         echo<<<EOT
-    </ul>
-</section>
+				</ul>
+			</section>
 
-<section class="form">
-    <form action="Speisekarte.php" method="post">
-        <h2>Warenkorb</h2>
-        <select id="shopping-cart" multiple name="pizza[]">
-            <!-- shopping cart elements-->
-        </select>
-        <button type="button" onclick="emptyCard()">Warenkorb leeren</button>
-        <button type="button" onclick="removeSelected()">Elemente entfernen</button>
-        <p id="totalCost" data-totalcost="0">Preis: 0€</p>
-        <h2>Ihre Adresse</h2>
-        <input type="text" name="vorname" placeholder="Vorname" required><br>
-        <input type="text" name="nachname" placeholder="Nachname" required><br>
-        <input type="text" name="adresse" placeholder="Adresse" required><br>
-        <input type="submit" name="submit" value="Bestellen" onclick="selectAll()">
-    </form>
-</section>
-</div>\n
+			<section class="form">
+				<form action="Speisekarte.php" method="post">
+					<h2>Warenkorb</h2>
+					<select id="shopping-cart" multiple name="pizza[]">
+		    			<!-- shopping cart elements-->
+					</select>
+					<button type="button" onclick="emptyCard()">Warenkorb leeren</button>
+					<button type="button" onclick="removeSelected()">Elemente entfernen</button>
+					<p id="totalCost" data-totalcost="0">Preis: 0€</p>
+
+					<h2>Ihre Adresse</h2>
+			        <input type="text" name="vorname" placeholder="Vorname" required><br>
+			        <input type="text" name="nachname" placeholder="Nachname" required><br>
+			        <input type="text" name="adresse" placeholder="Adresse" required><br>
+			        <input type="submit" name="submit" value="Bestellen" onclick="selectAll()">
+				</form>
+			</section>
+		</div>\n
 EOT;
         $this->generatePageFooter();
     }
@@ -85,9 +86,9 @@ EOT;
 
     protected function processReceivedData()
     {
-        if (empty($_POST)) {
-            return;
-        }
+    	if (empty($_POST)) {
+    		return;
+    	}
 
         $vorname = $_POST['vorname'];
         $nachname = $_POST['nachname'];
@@ -95,6 +96,7 @@ EOT;
         $date = date('Y-m-d H:i:s');
         $pizza = $_POST['pizza'];
 
+        // add bestellung
         $sql = "INSERT INTO bestellung(vorname, nachname, adresse, bestellzeitpunkt) VALUES('$vorname', '$nachname', '$adresse', '$date')";
         if ($this->_database->query($sql) === TRUE) {
             echo "New record created successfully ";
@@ -102,6 +104,7 @@ EOT;
             echo "Error: " . $sql . "<br>" . $this->_database->error;
         }
 
+        //add bestelltepizza
         $bestellungid = $this->_database->insert_id;
         $li_items = count($pizza);
         for ($i = 0; $i < $li_items; $i++) {

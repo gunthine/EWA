@@ -46,29 +46,28 @@ class Kunde extends Page
         $this->getViewData();
         $this->generatePageHeader('Kunde');
         echo <<<EOT
-<h2>Kunde</h2>
-<section class="kunden-wrapper">\n
+        <h1>Kunde</h1>
+        <section class="kunden-wrapper">\n
 EOT;
-    if ($this->available) {
-        $li_items = count($this->vorname);
-        for ($i = 0; $i < $li_items; $i++) {
-            echo<<<EOT
-<div class="bestelltepizza">
-    <img src="{$this->bilddatei[$i]}">
-    <div class="customerdata">
-        <h3>{$this->pizzaname[$i]}</h3>
-        <p>{$this->vorname[$i]} {$this->nachname[$i]}, {$this->adresse[$i]}</p>
-        <p>Status: {$this->printStatus($this->status[$i])}</p>
-    </div>
-</div>\n
+        if ($this->available) {
+            $li_items = count($this->vorname);
+            for ($i = 0; $i < $li_items; $i++) {
+                echo<<<EOT
+            <div class="bestelltepizza">
+                <img src="{$this->bilddatei[$i]}" alt="{$this->pizzaname[$i]}">
+                <div class="customerdata">
+                    <h2>{$this->pizzaname[$i]}</h3>
+                    <p>{$this->vorname[$i]} {$this->nachname[$i]}, {$this->adresse[$i]}</p>
+                    <p>Status: {$this->printStatus($this->status[$i])}</p>
+                </div>
+            </div>\n
 EOT;
+            }
+        } else {
+            echo '<h1>Keine Pizzen bestellt...</h1>';
         }
-    } else {
-        echo '<h1>Keine Pizzen bestellt...</h1>';
-    }
-
-    echo<<<EOT
-</section>\n
+        echo<<<EOT
+        </section>\n
 EOT;
         $this->generatePageFooter();
     }
