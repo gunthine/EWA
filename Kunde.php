@@ -35,6 +35,9 @@ class Kunde extends Page
                 array_push($this->bilddatei, $row["bilddatei"]);
                 array_push($this->status, $row["status"]);
             }
+            $this->vorname = $this->escapeArray($this->vorname); 
+            $this->nachname = $this->escapeArray($this->nachname);
+            $this->adresse = $this->escapeArray($this->adresse);
             $this->available = true;
         } else {
             $this->available = false;

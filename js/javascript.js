@@ -1,10 +1,9 @@
 // Pizzen zum Wahrenkorb hinzufügen
 function addPizza(id) {
     // add pizza
-    var pizzaName = document.getElementById(id).name;
     var option = document.createElement("option");
-    option.text = pizzaName;
-    option.value = pizzaName;
+    option.text = id;
+    option.value = id;
     document.getElementById("shopping-cart").add(option);
 
     // update costs

@@ -52,7 +52,7 @@ EOT;
             echo <<<EOT
 					<li>
 						<img src="{$this->pizzaBild[$i]}" id="{$id}" alt="{$id}" onclick="addPizza(this.id)" data-pizzacost="{$pizzaPreis}" />
-						<button id="button{$id}" name="{$id}" data-pizzacost="{$pizzaPreis}" onclick="addPizza(this.id)">Pizza {$id} - {$pizzaPreis} €</button>
+						<button id="{$id}" data-pizzacost="{$pizzaPreis}" onclick="addPizza(this.id)">Pizza {$id} - {$pizzaPreis} €</button>
 					</li>\n
 EOT;
         }
@@ -90,9 +90,9 @@ EOT;
     		return;
     	}
 
-        $vorname = $_POST['vorname'];
-        $nachname = $_POST['nachname'];
-        $adresse = $_POST['adresse'];
+        $vorname = $this->_database->real_escape_string($_POST['vorname']);
+        $nachname = $this->_database->real_escape_string($_POST['nachname']);
+        $adresse = $this->_database->real_escape_string($_POST['adresse']);
         $date = date('Y-m-d H:i:s');
         $pizza = $_POST['pizza'];
 

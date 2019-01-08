@@ -3,6 +3,9 @@ require_once './Page.php';
 
 class Fahrer extends Page
 {
+    protected $vorname = array();
+    protected $nachname = array();
+    protected $adresse = array();
     protected $bilddatei = array();
     protected $pizzaname = array();
     protected $pizzaid = array();
@@ -21,16 +24,22 @@ class Fahrer extends Page
 
     protected function getViewData()
     {
-        $sql = "SELECT bilddatei, pizzaname, pizzaid, status FROM bestelltepizza NATURAL JOIN angebot WHERE status = 'f' OR status = 'i';";
+        $sql = "SELECT bilddatei, pizzaname, pizzaid, vorname, nachname, adresse, status FROM angebot NATURAL JOIN bestelltepizza NATURAL JOIN bestellung WHERE status = 'f' OR status = 'i';";
         $result = $this->_database->query($sql);
 
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
+                array_push($this->vorname, $row["vorname"]);
+                array_push($this->nachname, $row["nachname"]);
+                array_push($this->adresse, $row["adresse"]);
                 array_push($this->bilddatei, $row["bilddatei"]);
                 array_push($this->pizzaname, $row["pizzaname"]);
                 array_push($this->pizzaid, $row["pizzaid"]);
                 array_push($this->status, $row["status"]);
             }
+            $this->vorname = $this->escapeArray($this->vorname); 
+            $this->nachname = $this->escapeArray($this->nachname);
+            $this->adresse = $this->escapeArray($this->adresse);
             $this->available = true;
         } else {
             $this->available = false;
@@ -42,8 +51,8 @@ class Fahrer extends Page
         $this->getViewData();
         $this->generatePageHeader("Fahrer");
         echo <<<EOT
-		<h2>Fahrer</h2>
-		<form class="baecker-wrapper" action="Fahrer.php" method="post">
+		<h1>Fahrer</h1>
+		<form class="baecker-wrapper" action="Fahrer.php" method="post">\n
 EOT;
         if ($this->available) {
             $li_items = count($this->bilddatei);
@@ -51,8 +60,12 @@ EOT;
                 echo<<<EOT
 			<section class="bestelltepizza">
 			    <img src="{$this->bilddatei[$i]}" alt="{$this->pizzaname[$i]}">
-			    <div class="pizzadata">
-			        <h3>{$this->pizzaname[$i]}, id: {$this->pizzaid[$i]}</h3>
+                <div class="adresse">
+                    <h3>{$this->pizzaname[$i]}</h3>
+                    <p>Name: {$this->vorname[$i]} {$this->nachname[$i]}<p>
+                    <p>Adresse: {$this->adresse[$i]}</p>
+                </div>
+                <div class="labelgroup">
 					<label>
 						<input type="radio" name="{$this->pizzaid[$i]}" value="f" 
 EOT;

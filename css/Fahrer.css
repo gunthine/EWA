@@ -42,27 +42,25 @@ input[type=submit] {
     order: 1;
 }
 
-.pizzadata {
-    width: 75%;
+.adresse {
     order: 2;
+    width: 40%;
+    text-align: center;
+}
+
+.labelgroup {
+    order: 3;
+    width: 35%;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.pizzadata h3 {
+.labelgroup label {
     order: 1;
-    text-align: center;
-
-}
-
-.pizzadata label {
     font-size: 1.2em;
-    order: 2;
-    text-align: center;
 }
 
-.pizzadata p {
-    order: 3;
-    text-align: center;
+.labelgroup p {
+    order: 2;
 }

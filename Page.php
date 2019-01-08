@@ -74,4 +74,12 @@ EOT;
         }
         return $char;
     }
+
+    protected function escapeArray($array) {
+        $li_items = count($array);
+        for ($i = 0; $i < $li_items; $i++) {
+            $array[$i] = htmlspecialchars($array[$i]);
+        }
+        return $array;
+    }
 }
