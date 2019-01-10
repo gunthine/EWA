@@ -1,0 +1,25 @@
+iframe {
+	box-sizing: border-box;
+	width: 90%;
+	margin: auto;
+}
+
+article {
+	width: 90%;
+	margin: auto;
+}
+
+@media (min-width: 768px) {
+	iframe {
+		width: 70%;
+	}
+
+	article {
+		width: 70%;
+	}
+}	
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+}

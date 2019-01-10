@@ -23,12 +23,13 @@ abstract class Page
     {
         $headline = htmlspecialchars($headline);
         header("Content-type: text/html; charset=UTF-8");
-        echo <<<EOT
+        echo <<<HTML
 <!DOCTYPE html>
 <html lang="de">
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link rel="stylesheet" href="css/master.css"/>
         <link rel="stylesheet" href="css/$headline.css"/>
         <script src="js/javascript.js"></script>
@@ -44,16 +45,16 @@ abstract class Page
             <a style="float:right" href="Impressum.php">Impressum</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a>
         </nav>\n
-EOT;
+HTML;
 }
 
 
     protected function generatePageFooter()
     {
-        echo<<<EOT
+        echo<<<HTML
     </body>
 </html>
-EOT;
+HTML;
     }
 
     protected function processReceivedData()

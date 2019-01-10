@@ -48,14 +48,14 @@ class Kunde extends Page
     {
         $this->getViewData();
         $this->generatePageHeader('Kunde');
-        echo <<<EOT
+        echo <<<HTML
         <h1>Kunde</h1>
         <section class="kunden-wrapper">\n
-EOT;
+HTML;
         if ($this->available) {
             $li_items = count($this->vorname);
             for ($i = 0; $i < $li_items; $i++) {
-                echo<<<EOT
+                echo<<<HTML
             <div class="bestelltepizza">
                 <img src="{$this->bilddatei[$i]}" alt="{$this->pizzaname[$i]}">
                 <div class="customerdata">
@@ -64,14 +64,14 @@ EOT;
                     <p>Status: {$this->printStatus($this->status[$i])}</p>
                 </div>
             </div>\n
-EOT;
+HTML;
             }
         } else {
             echo '<h1>Keine Pizzen bestellt...</h1>';
         }
-        echo<<<EOT
+        echo<<<HTML
         </section>\n
-EOT;
+HTML;
         $this->generatePageFooter();
     }
 

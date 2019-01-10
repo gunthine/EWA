@@ -41,55 +41,56 @@ class Baecker extends Page
     {
         $this->getViewData();
         $this->generatePageHeader('Baecker');
-        echo <<<EOT
-		<h1>Bäcker</h1>
-		<form class="baecker-wrapper" action="Bäcker.php" method="post">\n
-EOT;
+        echo <<<HTML
+		<h1>Bäcker</h1>\n
+HTML;
         if ($this->available) {
+        	echo '		<form class="baecker-wrapper" action="Bäcker.php" method="post">';
             $li_items = count($this->bilddatei);
             for ($i = 0; $i < $li_items; $i++) {
-                echo<<<EOT
+                echo<<<HTML
+
 			<section class="bestelltepizza">
-			    <img src="{$this->bilddatei[$i]}" alt="{$this->pizzaname[$i]}">
+			    <img src="{$this->bilddatei[$i]}" alt="{$this->pizzaname[$i]}" />
 		        <div class="pizzadata">
 		            <h3>{$this->pizzaname[$i]}, Bestellnummer: {$this->pizzaid[$i]}</h3>
 		            <label>
 		                <input type="radio" name="{$this->pizzaid[$i]}" 
-EOT;
+HTML;
                 if ($this->status[$i] == 'b') {echo 'checked ';}
-                echo<<<EOT
-value="b">
+                echo<<<HTML
+value="b" />
             			bestellt
 		            </label>
         			<label>
             			<input type="radio" name="{$this->pizzaid[$i]}" value="o" 
-EOT;
+HTML;
                 if ($this->status[$i] == 'o') {echo 'checked';}
-                echo<<<EOT
->
+                echo<<<HTML
+/>
             			im Ofen
         			</label>
         			<label>
-            			<input type="radio" name="{$this->pizzaid[$i]}" value="f"
-EOT;
+            			<input type="radio" name="{$this->pizzaid[$i]}" value="f" 
+HTML;
                 if ($this->status[$i] == 'f') {echo 'checked';}
-                echo<<<EOT
->
+                echo<<<HTML
+/>
             			fertig
         			</label>
         			<p>Status: {$this->printStatus($this->status[$i])}</p>
     			</div>
 			</section>\n
-EOT;
+HTML;
             }
-            echo<<<EOT
-			<input type="submit" value="Aktualisieren">
+            echo<<<HTML
+			<input type="submit" value="Aktualisieren" />
 		</form>\n
-EOT;
+HTML;
         } else {
-            echo<<<EOT
-<h2>Keine Pizzen bestellt...</h2>
-EOT;
+            echo<<<HTML
+		<h2>Keine Pizzen bestellt...</h2>\n
+HTML;
 
         }
         $this->generatePageFooter();

@@ -22,18 +22,18 @@ class indexPage extends Page
     {
         $this->getViewData();
         $this->generatePageHeader("Startseite");
-        echo <<<EOT
+        echo <<<HTML
         <div class="wrapper">
             <h1>Pizzeria Da Salvo</h1>
             <article>
                 <h2>Die beste Pizza in Mainz</h2>
-                <p>Das sehr freundliche und ausmerksame Servicepersonal der Pizzeria Da Salvo gibt Ihnen das Gefühl nach Hause zu kommen.
+                <p>Das sehr freundliche und ausmerksame Servicepersonal der Pizzeria Da Salvo gibt Ihnen das Gefühl <em>nach Hause</em> zu kommen.
                 Hier sind nicht nur die Speisen lecker und frisch zubereitet, das familiäre Gefühl, das sich bei einem Besuch einstellt,
                 ist einzigartig.</p>
             </article>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2564.278924474935!2d8.218222815715306!3d50.00612707941654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bd9683508f2f2d%3A0xf0d973378acef83f!2sPizzeria+Da+Salvo!5e0!3m2!1sde!2sde!4v1543933678054" width="500" height="275" allowfullscreen></iframe>
         </div>\n
-EOT;
+HTML;
         $this->generatePageFooter();
     }
 

@@ -50,14 +50,15 @@ class Fahrer extends Page
     {
         $this->getViewData();
         $this->generatePageHeader("Fahrer");
-        echo <<<EOT
-		<h1>Fahrer</h1>
-		<form class="baecker-wrapper" action="Fahrer.php" method="post">\n
-EOT;
+        echo <<<HTML
+		<h1>Fahrer</h1>\n
+HTML;
         if ($this->available) {
+        	echo '		<form class="baecker-wrapper" action="Fahrer.php" method="post">';
             $li_items = count($this->bilddatei);
             for ($i = 0; $i < $li_items; $i++) {
-                echo<<<EOT
+                echo<<<HTML
+
 			<section class="bestelltepizza">
 			    <img src="{$this->bilddatei[$i]}" alt="{$this->pizzaname[$i]}">
                 <div class="adresse">
@@ -68,37 +69,37 @@ EOT;
                 <div class="labelgroup">
 					<label>
 						<input type="radio" name="{$this->pizzaid[$i]}" value="f" 
-EOT;
-                if ($this->status[$i] == 'f') {echo 'checked';}
-                echo<<<EOT
->
+HTML;
+                if ($this->status[$i] == 'f') {echo 'checked ';}
+                echo<<<HTML
+/>
                 		fertig
             		</label>
             		<label>
                 		<input type="radio" name="{$this->pizzaid[$i]}" value="i" 
-EOT;
-                if ($this->status[$i] == 'i') {echo 'checked';}
-                echo<<<EOT
->
+HTML;
+                if ($this->status[$i] == 'i') {echo 'checked ';}
+                echo<<<HTML
+/>
                 		in Zustellung
             		</label>
             		<label>
-                		<input type="radio" name="{$this->pizzaid[$i]}" value="z">
+                		<input type="radio" name="{$this->pizzaid[$i]}" value="z" />
                 		zugestellt
 		            </label>
         		    <p>Status: {$this->printStatus($this->status[$i])}</p>
         		</div>
 			</section>\n
-EOT;
+HTML;
             }
-            echo<<<EOT
-			<input type="submit" value="Aktualisieren">
+            echo<<<HTML
+			<input type="submit" value="Aktualisieren" />
 		</form>\n
-EOT;
+HTML;
         } else {
-            echo<<<EOT
-<h1>Keine Pizzen fertig...</h1>
-EOT;
+            echo<<<HTML
+		<h2>Keine Pizzen fertig...</h2>\n
+HTML;
 
         }
         $this->generatePageFooter();

@@ -38,26 +38,26 @@ class Speisekarte extends Page
     {
         $this->getViewData();
         $this->generatePageHeader("Speisekarte");
-        echo<<<EOT
+        echo<<<HTML
 		<div class="wrapper">
 			<section class="speisekarte">
-				<h2>Speisekarte</h2>
+				<h1>Speisekarte</h1>
 				<ul>\n
-EOT;
+HTML;
 
         $li_items = count($this->pizzaName);
         for($i = 0; $i < $li_items; $i++) {
             $id = $this->pizzaName[$i];
             $pizzaPreis = $this->pizzaPreis[$i];
-            echo <<<EOT
+            echo <<<HTML
 					<li>
-						<img src="{$this->pizzaBild[$i]}" id="{$id}" alt="{$id}" onclick="addPizza(this.id)" data-pizzacost="{$pizzaPreis}" />
-						<button id="{$id}" data-pizzacost="{$pizzaPreis}" onclick="addPizza(this.id)">Pizza {$id} - {$pizzaPreis} €</button>
+						<img src="{$this->pizzaBild[$i]}" id="img{$id}" class="{$id}" alt="" onclick="addPizza(this.id)" data-pizzacost="{$pizzaPreis}" />
+						<button id="btn{$id}" class="{$id}" data-pizzacost="{$pizzaPreis}" onclick="addPizza(this.id)">Pizza {$id} - {$pizzaPreis} €</button>
 					</li>\n
-EOT;
+HTML;
         }
 
-        echo<<<EOT
+        echo<<<HTML
 				</ul>
 			</section>
 
@@ -67,19 +67,19 @@ EOT;
 					<select id="shopping-cart" multiple name="pizza[]">
 		    			<!-- shopping cart elements-->
 					</select>
-					<button type="button" onclick="emptyCard()">Warenkorb leeren</button>
-					<button type="button" onclick="removeSelected()">Elemente entfernen</button>
-					<p id="totalCost" data-totalcost="0">Preis: 0€</p>
+					<button type="button" class="redBtn" onclick="emptyCard()">Warenkorb leeren</button>
+					<button type="button" class="redBtn" onclick="removeSelected()">Elemente entfernen</button>
+					<p id="totalCost" data-totalcost="0">Preis: 0.00€</p>
 
-					<h2>Ihre Adresse</h2>
-			        <input type="text" name="vorname" placeholder="Vorname" required><br>
-			        <input type="text" name="nachname" placeholder="Nachname" required><br>
-			        <input type="text" name="adresse" placeholder="Adresse" required><br>
+			        <input type="text" name="vorname" placeholder="Vorname" maxlength="20" required><br>
+			        <input type="text" name="nachname" placeholder="Nachname" maxlength="20" required><br>
+			        <input type="text" name="adresse" placeholder="Adresse" maxlength="60" required><br>
 			        <input type="submit" name="submit" value="Bestellen" onclick="selectAll()">
+			        <input type="reset" class="redBtn">
 				</form>
 			</section>
 		</div>\n
-EOT;
+HTML;
         $this->generatePageFooter();
     }
 
@@ -98,22 +98,14 @@ EOT;
 
         // add bestellung
         $sql = "INSERT INTO bestellung(vorname, nachname, adresse, bestellzeitpunkt) VALUES('$vorname', '$nachname', '$adresse', '$date')";
-        if ($this->_database->query($sql) === TRUE) {
-            echo "New record created successfully ";
-        } else {
-            echo "Error: " . $sql . "<br>" . $this->_database->error;
-        }
+        $this->_database->query($sql);
 
         //add bestelltepizza
         $bestellungid = $this->_database->insert_id;
         $li_items = count($pizza);
         for ($i = 0; $i < $li_items; $i++) {
             $sql = "INSERT INTO bestelltepizza(pizzaname, bestellungid, status) VALUES('$pizza[$i]', '$bestellungid', 'b')";
-            if ($this->_database->query($sql) === TRUE) {
-                echo "New record created successfully ";
-            } else {
-                echo "Error: " . $sql . "<br>" . $this->_database->error;
-            }
+           	$this->_database->query($sql);
         }
     }
 
