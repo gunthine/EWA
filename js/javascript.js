@@ -73,3 +73,9 @@ function myFunction() {
         x.className = "topnav";
     }
 }
+
+function updateStatus(id, value) {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", "updateStatus.php?id=" + id + "&status=" + value);
+    xmlHttp.send();
+}

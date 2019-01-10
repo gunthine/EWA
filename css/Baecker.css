@@ -47,13 +47,11 @@ input[type=submit] {
     order: 2;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
 .pizzadata h3 {
     order: 1;
     text-align: center;
-
 }
 
 .pizzadata label {

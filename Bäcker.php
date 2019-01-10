@@ -50,20 +50,20 @@ HTML;
             for ($i = 0; $i < $li_items; $i++) {
                 echo<<<HTML
 
-			<section class="bestelltepizza">
+			<section id="{$this->pizzaid[$i]}" class="bestelltepizza">
 			    <img src="{$this->bilddatei[$i]}" alt="{$this->pizzaname[$i]}" />
 		        <div class="pizzadata">
 		            <h3>{$this->pizzaname[$i]}, Bestellnummer: {$this->pizzaid[$i]}</h3>
 		            <label>
-		                <input type="radio" name="{$this->pizzaid[$i]}" 
+		                <input type="radio" onclick="updateStatus(this.name, this.value)" name="{$this->pizzaid[$i]}" value="b"  
 HTML;
                 if ($this->status[$i] == 'b') {echo 'checked ';}
                 echo<<<HTML
-value="b" />
+/>
             			bestellt
 		            </label>
         			<label>
-            			<input type="radio" name="{$this->pizzaid[$i]}" value="o" 
+            			<input type="radio" onclick="updateStatus(this.name, this.value)" name="{$this->pizzaid[$i]}" value="o" 
 HTML;
                 if ($this->status[$i] == 'o') {echo 'checked';}
                 echo<<<HTML
@@ -71,20 +71,18 @@ HTML;
             			im Ofen
         			</label>
         			<label>
-            			<input type="radio" name="{$this->pizzaid[$i]}" value="f" 
+            			<input type="radio" onclick="updateStatus(this.name, this.value)" name="{$this->pizzaid[$i]}" value="f" 
 HTML;
                 if ($this->status[$i] == 'f') {echo 'checked';}
                 echo<<<HTML
 />
             			fertig
         			</label>
-        			<p>Status: {$this->printStatus($this->status[$i])}</p>
     			</div>
 			</section>\n
 HTML;
             }
             echo<<<HTML
-			<input type="submit" value="Aktualisieren" />
 		</form>\n
 HTML;
         } else {
@@ -98,14 +96,7 @@ HTML;
 
     protected function processReceivedData()
     {
-        foreach ($_POST as $key => $value) {
-            $sql = "UPDATE bestelltepizza SET status = '$value' WHERE pizzaid = '$key'";
-            if ($this->_database->query($sql) === TRUE) {
-                echo "New record created successfully ";
-            } else {
-                echo "Error: " . $sql . "<br>" . $this->_database->error;
-            }
-        }
+    	
     }
 
     public static function main()
