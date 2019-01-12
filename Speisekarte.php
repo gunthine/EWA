@@ -62,7 +62,7 @@ HTML;
 			</section>
 
 			<section class="form">
-				<form action="Speisekarte.php" method="post">
+				<form action="Speisekarte.php" method="post" accept-charset="UTF-8">
 					<h2>Warenkorb</h2>
 					<select id="shopping-cart" multiple name="pizza[]">
 		    			<!-- shopping cart elements-->

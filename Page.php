@@ -9,8 +9,7 @@ abstract class Page
         if ($this->_database->connect_error) {
             die("Connection failed: " . $this->_database->connect_error);
         }
-
-
+        $this->_database->set_charset("utf8");
     }
     
     protected function __destruct()

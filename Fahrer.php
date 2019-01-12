@@ -54,7 +54,7 @@ class Fahrer extends Page
 		<h1>Fahrer</h1>\n
 HTML;
         if ($this->available) {
-        	echo '		<form class="baecker-wrapper" action="Fahrer.php" method="post">';
+        	echo '		<form class="baecker-wrapper" action="Fahrer.php" method="post" accept-charset="UTF-8">';
             $li_items = count($this->bilddatei);
             for ($i = 0; $i < $li_items; $i++) {
                 echo<<<HTML
@@ -107,6 +107,7 @@ HTML;
 
     protected function processReceivedData()
     {
+    	if (isset($_POST['']))
         foreach ($_POST as $key => $value) {
             $sql = "UPDATE bestelltepizza SET status = '$value' WHERE pizzaid = '$key'";
             if ($this->_database->query($sql) === TRUE) {

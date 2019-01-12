@@ -45,7 +45,7 @@ class Baecker extends Page
 		<h1>Bäcker</h1>\n
 HTML;
         if ($this->available) {
-        	echo '		<form class="baecker-wrapper" action="Bäcker.php" method="post">';
+        	echo '		<form class="baecker-wrapper" action="Bäcker.php" method="post" accept-charset="UTF-8">';
             $li_items = count($this->bilddatei);
             for ($i = 0; $i < $li_items; $i++) {
                 echo<<<HTML
