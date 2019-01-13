@@ -75,6 +75,7 @@ function myFunction() {
 }
 
 function updateStatus(id, value) {
+    "use strict";
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open("GET", "updateStatus.php?id=" + id + "&status=" + value);
     xmlHttp.send();
