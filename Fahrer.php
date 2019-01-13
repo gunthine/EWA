@@ -93,7 +93,7 @@ HTML;
 HTML;
             }
             echo<<<HTML
-			<input type="submit" value="Aktualisieren" />
+			<input id="submitFahrer" type="submit" value="Aktualisieren" />
 		</form>\n
 HTML;
         } else {
@@ -107,15 +107,16 @@ HTML;
 
     protected function processReceivedData()
     {
-    	if (isset($_POST['']))
-        foreach ($_POST as $key => $value) {
-            $sql = "UPDATE bestelltepizza SET status = '$value' WHERE pizzaid = '$key'";
-            if ($this->_database->query($sql) === TRUE) {
-                echo "New record created successfully ";
-            } else {
-                echo "Error: " . $sql . "<br>" . $this->_database->error;
-            }
-        }
+    	if (isset($_POST)) {
+	        foreach ($_POST as $key => $value) {
+	            $sql = "UPDATE bestelltepizza SET status = '$value' WHERE pizzaid = '$key'";
+	            if ($this->_database->query($sql) === TRUE) {
+	                // echo "New record created successfully ";
+	            } else {
+	                echo "Error: " . $sql . "<br>" . $this->_database->error;
+	            }
+	        }
+    	}
     }
 
     public static function main()

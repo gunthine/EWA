@@ -34,6 +34,7 @@
 }
 .speisekarte img {
     width: 33%;
+    cursor: pointer;
 }
 
 .speisekarte button {
@@ -45,6 +46,7 @@
     border-radius: 5px;
     text-align: center;
     margin: auto;
+    cursor: pointer;
 }
 
 .kundenstatus input {

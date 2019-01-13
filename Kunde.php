@@ -23,7 +23,9 @@ class Kunde extends Page
 
     protected function getViewData()
     {
-        $sql = "SELECT vorname, nachname, adresse, pizzaname, bilddatei, status FROM bestellung NATURAL JOIN bestelltepizza NATURAL JOIN angebot WHERE status != 'z'";
+        if (isset($_COOKIE["BestellungID"]))
+            $bestellungid = $_COOKIE["BestellungID"];
+        $sql = "SELECT vorname, nachname, adresse, pizzaname, bilddatei, status FROM bestellung NATURAL JOIN bestelltepizza NATURAL JOIN angebot WHERE bestellungid = $bestellungid";
         $result = $this->_database->query($sql);
 
         if ($result->num_rows > 0) {
@@ -59,7 +61,7 @@ HTML;
             <div class="bestelltepizza">
                 <img src="{$this->bilddatei[$i]}" alt="{$this->pizzaname[$i]}">
                 <div class="customerdata">
-                    <h2>{$this->pizzaname[$i]}</h3>
+                    <h3>{$this->pizzaname[$i]}</h3>
                     <p>{$this->vorname[$i]} {$this->nachname[$i]}, {$this->adresse[$i]}</p>
                     <p>Status: {$this->printStatus($this->status[$i])}</p>
                 </div>

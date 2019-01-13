@@ -100,13 +100,16 @@ HTML;
         $sql = "INSERT INTO bestellung(vorname, nachname, adresse, bestellzeitpunkt) VALUES('$vorname', '$nachname', '$adresse', '$date')";
         $this->_database->query($sql);
 
-        //add bestelltepizza
+        // add bestelltepizza
         $bestellungid = $this->_database->insert_id;
         $li_items = count($pizza);
         for ($i = 0; $i < $li_items; $i++) {
             $sql = "INSERT INTO bestelltepizza(pizzaname, bestellungid, status) VALUES('$pizza[$i]', '$bestellungid', 'b')";
            	$this->_database->query($sql);
         }
+
+        // generate session
+        setcookie("BestellungID", $bestellungid);
     }
 
 
