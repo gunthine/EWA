@@ -93,7 +93,7 @@ HTML;
 />
                         fertig
                     </label>
-                    <p>Status: {$this->printStatus($this->status[$i])}</p>
+                    <p id="{$this->pizzaid[$i]}">Status: {$this->printStatus($this->status[$i])}</p>
                 </div>
             </section>\n
 HTML;

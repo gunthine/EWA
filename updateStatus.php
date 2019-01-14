@@ -19,11 +19,18 @@ class updateStatus extends Page
         $id = $_GET["id"];
         $status = $_GET["status"];   
         $sql = "UPDATE bestelltepizza SET status = '$status' WHERE pizzaid = '$id'";
-        if ($this->_database->query($sql) === TRUE) {
-            echo "New record created successfully ";
-        } else {
-            echo "Error: " . $sql . "<br>" . $this->_database->error;
+        $this->_database->query($sql);
+        
+        $sql = "SELECT status FROM bestelltepizza WHERE pizzaid = '$id'";
+        $recordset = $this->_database->query($sql);
+        $statusArray = array(); 
+        while ($record = $recordset->fetch_assoc()) {
+            $statusArray[] = htmlspecialchars($record["status"]);
         }
+        $json_data = json_encode($statusArray);
+        header("Content-type: application/json; charset=UTF-8");
+        echo $json_data;
+
     }
 
     public static function main()

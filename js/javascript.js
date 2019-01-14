@@ -77,6 +77,30 @@ function myFunction() {
 function updateStatus(id, value) {
     "use strict";
     var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("GET", "updateStatus.php?id=" + id + "&status=" + value);
+    xmlHttp.open("GET", "updateStatus.php?id=" + id + "&status=" + value, true);
+    xmlHttp.responseType = 'json';
+    xmlHttp.onreadystatechange = function() {
+    	if (this.readyState == 4 && this.status == 200) {
+    		for (var i = 0; i < this.response.length; i++) {
+    			changeStatusText(id, this.response[i]);
+    		}
+    	}
+    }
     xmlHttp.send();
+}
+
+function changeStatusText(id, text) {
+    var status = statusToText(text);
+	document.getElementById(id).innerHTML = "Status: " + status;
+}
+
+function statusToText(status) {
+    switch (status) {
+        case 'b': return 'bestellt';
+        case 'o': return 'im Ofen';
+        case 'f': return 'fertig';
+        case 'i': return 'in Zustellung';
+        case 'z': return 'zugestellt';
+    }
+    return status;
 }
